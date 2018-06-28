@@ -55,6 +55,7 @@
 									<select id="cardType" name="cardType" style="width:100%;">
 										<option value="Combat Character" selected>Combat Character</option>
 										<option value="Support Character">Support Character</option>
+										<option value="Hybrid Character">Hybrid Character</option>
 										<option value="Special Character">Special Character</option>
 										<option value="Item">Item</option>
 										<option value="Event">Event</option>
@@ -67,7 +68,6 @@
 								<td>Image:</td>
 								<td>
 									<input type="file" id="imageLoader" onchange="uploadImg()" style="width:100%;">
-									<img id="preview" src="" height="200" alt="Image preview...">
 								</td>
 							</tr>
 							<tr>
@@ -81,52 +81,51 @@
 							<tr>
 								<td>Tags:</td>
 								<td>
-									Use 'CTL' key to select multiple tags
+									Use 'CTL' key to select multiple tags. Hover over tag for description.
 									<select id="tag" size ="6" multiple style="width:100%">
-									<optgroup label="Body">
-										<option value="Behemoth">Behemoth</option>
-										<option value="Botanic">Botanic</option>
-										<option value="Gelatinous">Gelatinous</option>
-										<option value="Hominoid">Hominoid</option>
-										<option value="Insectoid">Insectoid</option>
-										<option value="Mamalian">Mammalian</option>
-										<option value="Mineral">Mineral</option>
-										<option value="Reptilian">Reptilian</option>
-										<option value="Robotic">Robotic</option>
+									<optgroup label="Body/ Flesh Type">
+										<option value="Botanic" 	title="Includes plants or other photosynthetic organisms.">Botanic</option>
+										<option value="Gelatinous"	title="Slimy characters like mollusks, amphibians, cnidarians or amorphous liquids.">Gelatinous</option>
+										<option value="Hominoid" 	title="These characters are human, or biologically similar.">Hominoid</option>
+										<option value="Insectoid" 	title="Includes insects and other arthropods, like arachnids and even crustaceans.">Insectoid</option>
+										<option value="Mamalian" 	title="These characters aren’t human but usually have hairy bodies.">Mammalian</option>
+										<option value="Mineral" 	title="Characters made out of rock or stone.">Mineral</option>
+										<option value="Reptilian"	title="These characters have scales and are typically cold-blooded.">Reptilian</option>
+										<option value="Robotic" 	title="Mechanical characters, often made out of metal.">Robotic</option>
+										<option value="Spectral"	title="Characters with gass-or energy-based bodies, like ghosts or bolts of lightning.">Spectral</option>
 									</optgroup>
-									<optgroup label="Environment">
-										<option value="Aerial">Aerial</option>
-										<option value="Aquatic">Aquatic</option>
-										<option value="Cosmic">Cosmic</option>
-										<option value="Cryonic">Cryonic</option>
-										<option value="Galvanic">Galvanic</option>
-										<option value="Pyric">Pyric</option>
-										<option value="Subterranean">Subterranean</option>
+									<optgroup label="Environment Resistances/Physical Capabilities">
+										<option value="Aerial"		title="Can fly or manipulate air.">Aerial</option>
+										<option value="Aquatic" 	title="Can swim or manipulate water.">Aquatic</option>
+										<option value="Behemoth"	title="Extremely large, like dragons, Godzilla, space whales, etc.">Behemoth</option>
+										<option value="Cosmic"		title="Can survive in space or withstand bombardment of intense radiation.">Cosmic</option>
+										<option value="Cryonic"		title="Resistant to cold temperatures or can manipulate ice.">Cryonic</option>
+										<option value="Galvanic"	title="Electrodynamic, generating or absorbing electricity.">Galvanic</option>
+										<option value="Pyric"		title="Thermoresistant or can manipulate fire.">Pyric</option>
+										<option value="Subterranean"title="Can burrow into the ground.">Subterranean</option>
 									</optgroup>
-									<optgroup label="Magic">
-										<option value="Angelic">Angelic</option>
-										<option value="Eldritch">Eldritch</option>
-										<option value="Enchanted">Enchanted</option>
-										<option value="Ethereal">Ethereal</option>
-										<option value="Manaform">Manaform</option>
-										<option value="Shapeshifter">Shapeshifter</option>
-										<option value="Undead">Undead</option>
+									<optgroup label="Spiritual/Magical Attributes">
+										<option value="Angelic"		title="Possess holy power, most likely granted by an external source.">Angelic</option>
+										<option value="Eldritch"	title="Associated with darkness and are often evil or horrific.">Eldritch</option>
+										<option value="Enchanted"	title="Have magical properties but can exist without magic.">Enchanted</option>
+										<option value="Shapeshifter"title="Can drastically change their physiology and/or appearance.">Shapeshifter</option>
+										<option value="Undead"		title="Related to death, such as skeletons, zombies or ghosts.">Undead</option>
 									</optgroup>
 									<optgroup label="Skill">
-										<option value="Grunt">Grunt</option>
-										<option value="Genius">Genius</option>
-										<option value="Warrior">Warrior</option>
-										<option value="Assassin">Assassin</option>
-										<option value="Sharpshooter">Sharpshooter</option>
-										<option value="Mage">Mage</option>
-										<option value="Cleric">Cleric</option>
-										<option value="Psionic">Psionic</option>
-										<option value="Healer">Healer</option>
-										<option value="Mechanic">Mechanic</option>
-										<option value="Pilot">Pilot</option>
-										<option value="Musician">Musician</option>
-										<option value="Leader">Leader</option>
-										<option value="Soldier">Soldier</option>
+										<option value="Assassin"	title="These rogue or ninja-like characters are stealthy and can attack with surprise.">Assassin</option>
+										<option value="Charmer" 	title="These characters are natural conversationalists. They may be comedic, suave or charming in some other way.">Charmer</option>
+										<option value="Cleric"		title="These characters can use magic or cast spells through the intervention of a more powerful entity.">Cleric</option>
+										<option value="Genius"		title="These characters have high intelligence, are clever and/or can perform complicated intellectual tasks.">Genius</option>
+										<option value="Healer"		title="Adept at healing others, and often have medical knowledge.">Healer</option>
+										<option value="Leader"		title="Skillful at commanding other characters, and often give bonuses to others">Leader</option>
+										<option value="Mage"		title="These characters are able to use magic or cast spells through knowledge or skill.">Mage</option>
+										<option value="Mechanic"	title="These characters are adept at constructing and fixing machines and electronics.">Mechanic</option>
+										<option value="Performer" 	title="these characters express themselves through the performing arts. They may be talented musicians, dancers or thespians.">Performer</option>
+										<option value="Pilot"		title="These characters are adept at driving vehicles.">Pilot</option>
+										<option value="Psionic"		title="These characters are able to manipulate reality or have extrasensory perception through unique neurology and mental powers.">Psionic</option>
+										<option value="Sharpshooter"title="These characters are skilled at accurate projectile weapon use and often attack from a distance with guns, arrows, etc.">Sharpshooter</option>
+										<option value="Trooper"		title="These characters are underlings that follow a chain of command. They often fight in groups.">Trooper</option>
+										<option value="Warrior" 	title="These characters are skillful fighters and often use martial arts or weapons.">Warrior</option>
 									</optgroup>
 									</select>
 								</td>

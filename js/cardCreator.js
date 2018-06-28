@@ -31,9 +31,12 @@ function draw(){
 		case "Support Character":
 			cardImage.src = "img/supportCharacter.png"; 
 			break;
-		case "Special Character":
+		case "Hybrid Character":
 			cardImage.src = "img/hybridCharacter.png";
 			break;
+		case "Special Character":
+			cardImage.src = "img/specialCharacter.png";
+			break
 		case "Item":
 			cardImage.src = "img/item.png";
 			break;
@@ -52,6 +55,7 @@ function draw(){
 	
 	
 	//wait for image to load to draw on the canvas
+	//all other elements must be drawn on top of the base image
 	cardImage.onload = function(){
 		ctx.drawImage(cardImage,0,0,350,500);
 		
@@ -61,9 +65,10 @@ function draw(){
 		ctx.fillText(document.getElementById("cName").value, 65,35);
 		
 		//uploaded image
-		ctx.drawImage(uploadImg, 20,20,100,100);
-		console.log(uploadedImg.src);
-		
+		uploadedImg.onload = function(){
+			ctx.drawImage(uploadedImg, 30,45,230,200);
+			console.log(uploadedImg.src);
+		}
 		
 		//Card class
 		ctx.font = numberFont;
@@ -197,13 +202,12 @@ function uploadImg(){
 	
 	reader.onload = function(){
 		uploadedImg.src = reader.result;
-		
 	}
 	
 	if(file){
 		reader.readAsDataURL(file);
 	}else{
-		uploadedImg.src = "";
+		//uploadedImg.src = "";
 	}
 }
 
