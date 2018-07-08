@@ -196,13 +196,13 @@ function wrapText(context, text, x, y, maxWidth, lineHeight){
 /* code inspired by  https://stackoverflow.com/questions/22087076/how-to-make-a-simple-image-upload-using-javascript-html
 */
 function uploadImg(){
-	var preview = document.getElementById("preview");
 	var file = document.querySelector('input[type=file]').files[0];
 	var reader = new FileReader();
 	
 	reader.onload = function(){
 		uploadedImg.src = reader.result;
-	}
+		document.getElementById("imageLoaderLabel").innerHTML = file.name;
+	} 
 	
 	if(file){
 		reader.readAsDataURL(file);

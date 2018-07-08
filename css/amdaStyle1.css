@@ -1,7 +1,5 @@
 /* Olivia Giles 
 	2/17/2018
-	
-	Old style
 */
 
 :root{
@@ -10,63 +8,68 @@
 }
 
 *{
-	box-sizing: border-box;
+	/* box-sizing: border-box; */
 	font-family: Corbel, sans-serif;
 	color:  var(--eigengrau);
 }
 
 body{
 	background-color: var(--eigengrau);
-	margin:auto;
+	background-image: url("../img/backgroundTile.png");
+	padding: 0px;
 }
 
-header{
+nav{
 	padding: 20px;
-	/*background-color: whiteSmoke;*/
-}
-main, header, footer{
-	max-width: 760px;
-	padding: 20px;
-	margin-top: 10px;
 	margin-bottom: 10px;
-	margin-right: auto;
-	margin-left: auto;
-	background-color: whiteSmoke;
+	background-color: rgba(255, 255, 255, 0.9);
 	box-shadow: 0px 0px 20px var(--turquoise);
 }
+
+main{
+	margin-top: 120px;
+}
+
+.card{
+	min-width: 350px;
+	margin-bottom: 10px;
+}
+
+.card, footer{
+	padding: 10px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: rgba(255, 255, 255, 0.9);
+	box-shadow: 0px 0px 20px var(--turquoise);
+}
+
+footer{
+	font-size: 10pt;
+	color: silver;
+	text-align: center;
+}
+
+canvas{
+	width: 350px;
+	height: 500px;
+	margin: auto;
+}
+
 #logo{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-/*columns*/
-.column{
-	float: left;
-	width: 50%;
-}
-.row:after{
-	content:"";
-	display: table;
-	clear: both;
-}
 
-td,tr{
-	vertical-align:top;
-}
-
-
-footer{
-	font-size: 10pt;
-	color: silver;
-}
 
 /* Responsive layout - makes the columns stack on top of each other instead of next to each other */
-@media (max-width:760px) {
+/* @media (max-width:760px) {
 	main, header, footer{
 		width:390px;
 	}
     .column {
         width: 100%;
     }
-}
+} */

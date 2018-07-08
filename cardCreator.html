@@ -30,7 +30,7 @@
 
 		<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>	
     </head>
-    <body onload="draw();" oninput="draw();">
+    <body onload="draw();">
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -43,23 +43,29 @@
         <script src="js/cardCreator.js"></script>
 		
 		<!--Content here-->
-		<header>
-			<img id="logo" src="img/AMDA_captioned.png" alt="AMDA logo" width=300/>
-		</header>
-		<main>
+		<nav class="navbar fixed-top">
+			<a class="navbar-brand" href="#">
+				<img id="logo" src="img/AMDA_captioned.png" alt="AMDA logo" width=300/>
+			</a>
+		</nav>
+		<!-- Main body -->
+		<main class="container">
 			<!--Two columns. 1st is input form, 2nd is canvas-->
-			<div class="row">
-				<div class="column">
-					<form>
-						<table style="width:100%;" border="0" cellspacing="0" cellpadding="2">
-							<tr>
-								<td style="width:25%;">Card Name:</td>
-								<td><input type="text" id="cName" style="width:100%;"></td>
-							</tr>
-							<tr>
-								<td>Card Type:</td>
-								<td>
-									<select id="cardType" name="cardType" style="width:100%;">
+			<div class="row no-gutters">
+				<div class="col">
+					<div class="card">
+						<form oninput="draw();">
+							<div class="row no-gutters">
+								<!-- Card Name -->
+								<div class="col-3">Card Name:</div>
+								<div class="col-9">
+									<input id="cName" class="form-control" type="text">
+								</div>
+								
+								<!-- Card Type -->
+								<div class="col-3">Card Type:</div>
+								<div class="col-9">
+									<select id="cardType" class="custom-select" name="cardType">
 										<option value="Combat Character" selected>Combat Character</option>
 										<option value="Support Character">Support Character</option>
 										<option value="Hybrid Character">Hybrid Character</option>
@@ -69,27 +75,37 @@
 										<option value="Lightning Event">Lightning Event</option>
 										<option value="Terrain">Terrain</option>
 									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>Image:</td>
-								<td>
-									<input type="file" id="imageLoader" onchange="uploadImg()" style="width:100%;">
-								</td>
-							</tr>
-							<tr>
-								<td>Class:</td>
-								<td><input type="number" id="cClass" min="0" max="9" style="width:20%;"></td>
-							</tr>
-							<tr>
-								<td>Morale:</td>
-								<td><input type="number" id="cMorale" min="0" max="9" style="width:20%;"></td>
-							</tr>
-							<tr>
-								<td>Tags:</td>
-								<td>
+								</div>
+
+								<!-- Imported Image -->
+								<div class="col-3">Image:</div>
+								<div class="col-9">
+									
+									<!-- <input type="file" id="imageLoader" class="form-control-file" onchange="uploadImg();"> -->
+									
+									<div class="custom-file">
+										<input type="file" id="imageLoader" class="custom-file-input" id="customFile" onchange="uploadImg();">
+										<label id="imageLoaderLabel" class="custom-file-label" for="customFile">Choose file</label>
+									</div>
+								</div>
+
+								<!-- Card Class -->
+								<div class="col-3">Class:</div>
+								<div class="col-9">
+									<input type="number" id="cClass" class="form-control" min="0" max="9" style="width:20%;">
+								</div>
+
+								<!-- Card Morale -->
+								<div class="col-3">Morale:</div>
+								<div class="col-9">
+									<input type="number" id="cMorale" class="form-control" min="0" max="9" style="width:20%;">
+								</div>
+
+								<!-- Card Tags -->
+								<div class="col-3">Tags:</div>
+								<div class="col-9">
 									Use 'CTL' key to select multiple tags. Hover over tag for description.
-									<select id="tag" size ="6" multiple style="width:100%">
+									<select id="tag" size ="6" multiple class="custom-select">
 									<optgroup label="Body/ Flesh Type">
 										<option value="Botanic" 	title="Includes plants or other photosynthetic organisms.">Botanic</option>
 										<option value="Gelatinous"	title="Slimy characters like mollusks, amphibians, cnidarians or amorphous liquids.">Gelatinous</option>
@@ -135,98 +151,86 @@
 										<option value="Warrior" 	title="These characters are skillful fighters and often use martial arts or weapons.">Warrior</option>
 									</optgroup>
 									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>Action 1:</td>
-								<td>
-									<table>
-										<tr>
-											<td>Name:</td>
-											<td><input type="text" id="action1Name" style="width:100%;"></td>
-										</tr>
-										<tr>
-											<td style="width:25%">Type:</td>
-											<td><select id="action1Type" style="width:100%;">
-												<option value="ability">Ability</option>
-												<option value="attack">Attack Action</option>
-												<option value="strategy">Strategy Action</option>
-												</select>
-											</td>
-										</tr>
-										<tr id="pwrField1" style="display: none">
-											<td>Power:</td>
-											<td><input type="number" id="action1pwr" min="0" max="99" style="width:30%;"></td>
-										</tr>
-										<tr>
-											<td>Description:</td>
-											<td><textarea id="action1Description" rows="3" style="width:100%;"></textarea></td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td>Action 2:</td>
-								<td>
-									<table>
-										<tr>
-											<td>Name:</td>
-											<td><input type="text" id="action2Name" style="width:100%;"></td>
-										</tr>
-										<tr>
-											<td style="width:25%">Type:</td>
-											<td><select id="action2Type" style="width:100%;">
-												<option value="ability">Ability</option>
-												<option value="attack">Attack Action</option>
-												<option value="strategy">Strategy Action</option>
-												</select>
-											</td>
-										</tr>
-										<tr id="pwrField2" style="display: none">
-											<td>Power:</td>
-											<td><input type="number" id="action2pwr" min="0" max="99" style="width:30%;"></td>
-										</tr>
-										<tr>
-											<td>Description:</td>
-											<td><textarea id="action2Description" rows="3" style="width:100%;"></textarea></td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td>Flavor Text:</td>
-								<td>
-									<textarea name="flavorText" rows="2" style="width:100%;"></textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>Credits:</td>
-								<td>
-									<table>
-										<tr>
-											<td style="width:35%">Your Name:</td>
-											<td><input type="text" id="cardCrafter" style="width:100%;"></td>
-										</tr>
-										<tr>
-											<td>Universe ID:</td>
-											<td><input type="text" id="universeID" style="width:100%;"></td>
-										</tr>
-										<tr>
-											<td>Artist Name:</td>
-											<td><input type="text" id="artCredit" style="width:100%;"></td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
-					</form>
+								</div>
+
+								<!-- Action 1 -->
+								<div class="col-3">Action 1:</div>
+								<div class="col-2">Name:</div>
+								<div class="col-7">
+									<input type="text" id="action1Name" class="form-control">
+								</div>
+								<div class="col-2 offset-3">Type:</div>
+								<div class="col-7">
+									<select id="action1Type" class="custom-select">
+										<option value="ability">Ability</option>
+										<option value="attack">Attack Action</option>
+										<option value="strategy">Strategy Action</option>
+									</select>
+								</div>
+								<div class="col-2 offset-3">Power:</div>
+								<div class="col-7">
+									<input type="number" id="action1pwr" min="0" max="99" class="form-control" style="width:30%;">
+								</div>
+								<div class="col-2 offset-3">Details:</div>
+								<div class="col-7">
+									<textarea id="action1Description" rows="3" class="form-control"></textarea>
+								</div>
+
+								<!-- Action 2 -->
+								<div class="col-3">Action 2:</div>
+								<div class="col-2">Name:</div>
+								<div class="col-7">
+									<input type="text" id="action2Name" class="form-control">
+								</div>
+								<div class="col-2 offset-3">Type:</div>
+								<div class="col-7">
+									<select id="action2Type" class="custom-select">
+										<option value="ability">Ability</option>
+										<option value="attack">Attack Action</option>
+										<option value="strategy">Strategy Action</option>
+									</select>
+								</div>
+								<div class="col-2 offset-3">Power:</div>
+								<div class="col-7">
+									<input type="number" id="action2pwr" min="0" max="99" class="form-control" style="width:30%;">
+								</div>
+								<div class="col-2 offset-3">Details:</div>
+								<div class="col-7">
+									<textarea id="action2Description" rows="3" class="form-control"></textarea>
+								</div>
+
+								<!-- Flavor text -->
+								<div class="col-3">Flavor Text</div>
+								<div class="col-9">
+									<textarea name="flavorText" rows="2" class="form-control"></textarea>
+								</div>
+
+								<!-- Credits -->
+								<div class="col-3">Credits:</div>
+								<div class="col-3">Your Name:</div>
+								<div class="col-6">
+									<input type="text" id="cardCrafter" class="form-control">
+								</div>
+								<div class="col-3 offset-3">Universe ID:</div>
+								<div class="col-6">
+									<input type="text" id="universeID" class="form-control">
+								</div>
+								<div class="col-3 offset-3">Artist:</div>
+								<div class="col-6">
+									<input type="text" id="artCredit" class="form-control">
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
-				<div class="column">
-					<canvas id="cardCanvas" width="350" height="500" style="border:1px solid black;">
-						Dynamically created card goes here. If you can read this, please use a browser that supports HTML5 canvas. 
-					</canvas>
-					
-					<input id="makePNG" type="button" value="Download PNG" style="margin:10px;">
+				<div class="col">
+					<div class="card text-center" style="width: 370px;">
+						<canvas id="cardCanvas" width="350" height="500" style="border:1px solid black;">
+							Dynamically created card goes here. If you can read this, please use a browser that supports HTML5 canvas. 
+						</canvas>
+						
+						<input id="makePNG" class="btn btn-default" type="button" value="Download PNG" style="margin:10px;">
+					</div>
 				</div>
 			</div>
 		</main>
