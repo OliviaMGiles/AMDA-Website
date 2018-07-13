@@ -26,16 +26,16 @@
         <link rel="stylesheet" href="css/main.css">
 		
 		<!-- My style -->
-		<link rel="stylesheet" href="css/amdaStyle1.css">
+		<link rel="stylesheet" href="css/amdaStyle.css">
 
 		<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>	
     </head>
-    <body onload="draw();">
+    <body onload="updatePage(); onLoad();">
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
+        
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
@@ -54,17 +54,17 @@
 			<div class="row no-gutters">
 				<div class="col">
 					<div class="card">
-						<form oninput="draw();">
+						<form oninput="updatePage();">
 							<div class="row no-gutters">
 								<!-- Card Name -->
 								<div class="col-3">Card Name:</div>
 								<div class="col-9">
-									<input id="cName" class="form-control" type="text">
+									<input id="cardName" class="form-control" type="text">
 								</div>
 								
 								<!-- Card Type -->
 								<div class="col-3">Card Type:</div>
-								<div class="col-9">
+								<div class="col-9" >
 									<select id="cardType" class="custom-select" name="cardType">
 										<option value="Combat Character" selected>Combat Character</option>
 										<option value="Support Character">Support Character</option>
@@ -80,9 +80,6 @@
 								<!-- Imported Image -->
 								<div class="col-3">Image:</div>
 								<div class="col-9">
-									
-									<!-- <input type="file" id="imageLoader" class="form-control-file" onchange="uploadImg();"> -->
-									
 									<div class="custom-file">
 										<input type="file" id="imageLoader" class="custom-file-input" id="customFile" onchange="uploadImg();">
 										<label id="imageLoaderLabel" class="custom-file-label" for="customFile">Choose file</label>
@@ -96,17 +93,17 @@
 								</div>
 
 								<!-- Card Morale -->
-								<div class="col-3">Morale:</div>
-								<div class="col-9">
+								<div class="col-3 moraleRow">Morale:</div>
+								<div class="col-9 moraleRow">
 									<input type="number" id="cMorale" class="form-control" min="0" max="9" style="width:20%;">
 								</div>
 
 								<!-- Card Tags -->
-								<div class="col-3">Tags:</div>
-								<div class="col-9">
+								<div class="col-3 tagRow">Tags:</div>
+								<div class="col-9 tagRow">
 									Use 'CTL' key to select multiple tags. Hover over tag for description.
 									<select id="tag" size ="6" multiple class="custom-select">
-									<optgroup label="Body/ Flesh Type">
+									<optgroup class="characterTags" label="Body/ Flesh Type">
 										<option value="Botanic" 	title="Includes plants or other photosynthetic organisms.">Botanic</option>
 										<option value="Gelatinous"	title="Slimy characters like mollusks, amphibians, cnidarians or amorphous liquids.">Gelatinous</option>
 										<option value="Hominoid" 	title="These characters are human, or biologically similar.">Hominoid</option>
@@ -117,7 +114,7 @@
 										<option value="Robotic" 	title="Mechanical characters, often made out of metal.">Robotic</option>
 										<option value="Spectral"	title="Characters with gass-or energy-based bodies, like ghosts or bolts of lightning.">Spectral</option>
 									</optgroup>
-									<optgroup label="Environment Resistances/Physical Capabilities">
+									<optgroup class="characterTags" label="Environment Resistances/Physical Capabilities">
 										<option value="Aerial"		title="Can fly or manipulate air.">Aerial</option>
 										<option value="Aquatic" 	title="Can swim or manipulate water.">Aquatic</option>
 										<option value="Behemoth"	title="Extremely large, like dragons, Godzilla, space whales, etc.">Behemoth</option>
@@ -127,14 +124,14 @@
 										<option value="Pyric"		title="Thermoresistant or can manipulate fire.">Pyric</option>
 										<option value="Subterranean"title="Can burrow into the ground.">Subterranean</option>
 									</optgroup>
-									<optgroup label="Spiritual/Magical Attributes">
+									<optgroup class="characterTags" label="Spiritual/Magical Attributes">
 										<option value="Angelic"		title="Possess holy power, most likely granted by an external source.">Angelic</option>
 										<option value="Eldritch"	title="Associated with darkness and are often evil or horrific.">Eldritch</option>
 										<option value="Enchanted"	title="Have magical properties but can exist without magic.">Enchanted</option>
 										<option value="Shapeshifter"title="Can drastically change their physiology and/or appearance.">Shapeshifter</option>
 										<option value="Undead"		title="Related to death, such as skeletons, zombies or ghosts.">Undead</option>
 									</optgroup>
-									<optgroup label="Skill">
+									<optgroup class="characterTags" label="Skill">
 										<option value="Assassin"	title="These rogue or ninja-like characters are stealthy and can attack with surprise.">Assassin</option>
 										<option value="Charmer" 	title="These characters are natural conversationalists. They may be comedic, suave or charming in some other way.">Charmer</option>
 										<option value="Cleric"		title="These characters can use magic or cast spells through the intervention of a more powerful entity.">Cleric</option>
@@ -143,12 +140,30 @@
 										<option value="Leader"		title="Skillful at commanding other characters, and often give bonuses to others">Leader</option>
 										<option value="Mage"		title="These characters are able to use magic or cast spells through knowledge or skill.">Mage</option>
 										<option value="Mechanic"	title="These characters are adept at constructing and fixing machines and electronics.">Mechanic</option>
-										<option value="Performer" 	title="these characters express themselves through the performing arts. They may be talented musicians, dancers or thespians.">Performer</option>
+										<option value="Performer" 	title="These characters express themselves through the performing arts. They may be talented musicians, dancers or thespians.">Performer</option>
 										<option value="Pilot"		title="These characters are adept at driving vehicles.">Pilot</option>
 										<option value="Psionic"		title="These characters are able to manipulate reality or have extrasensory perception through unique neurology and mental powers.">Psionic</option>
 										<option value="Sharpshooter"title="These characters are skilled at accurate projectile weapon use and often attack from a distance with guns, arrows, etc.">Sharpshooter</option>
 										<option value="Trooper"		title="These characters are underlings that follow a chain of command. They often fight in groups.">Trooper</option>
 										<option value="Warrior" 	title="These characters are skillful fighters and often use martial arts or weapons.">Warrior</option>
+									</optgroup>
+									<optgroup class="itemTags" label="Usage">
+										<option value="Armor"		title="These items often improve the character's defense or protect from effects.">Armor</option>
+										<option value="Consumable"	title="These items are often disposable and sent to the Buffer after use.">Consumable</option>
+										<option value="Equip" 		title="This item is associated with a single character at a time. Often small enough to carry.">Equip</option>
+										<option value="Power Source"title="These items provide energy to characters and may boost PWR, heal, or grant additional Actions.">Power Source</option>
+										<option value="Stationary" 	title="This item stays fixed on the field and is not associated with a particular Character. Often large and heavy.">Stationary</option>
+										<option value="Tool"		title="Allows a character to perform special tasks. Might have unique effects or give new acctions.">Tool</option>
+										<option value="Vehicle"		title="A character may need to be a Pilot to use sucessfully. A Vehicle may make a character harder to attack or give them additional offensive capabilities.">Vehicle</option>
+										<option value="Weapon"		title="Has offensive capabilities. Might boost PWR or provide additional Combat Actions.">Weapon</option>
+									</optgroup>
+									<optgroup class="itemTags" label="Properties">
+										<option value="Electronic"	title="These items have circuitry and require electricity to function.">Electronic</option>
+										<option value="Enchanted"	title="These items have a magical nature.">Enchanted</option>
+										<option value="Explosive"	title="These weapon items inflict damage with concussive force, and may affect multiple characters or deal lots of damage. They may also come with more risks.">Explosive</option>
+										<option value="Melee"		title="These weapon items are used to inflict close-range damage, like blades, clubs, staves, or whips.">Melee</option>
+										<option value="Organic"		title="These items are made of biological material like wood or flesh.">Organic</option>
+										<option value="Ranged"		title="These weapon items usually have to be aimed but can attack from a distance.">Ranged</option>
 									</optgroup>
 									</select>
 								</div>
@@ -161,14 +176,15 @@
 								</div>
 								<div class="col-2 offset-3">Type:</div>
 								<div class="col-7">
-									<select id="action1Type" class="custom-select">
+									<select id="action1Type" class="custom-select actionType">
+										<option value="-" selected="selected"> - </option>
 										<option value="ability">Ability</option>
-										<option value="attack">Attack Action</option>
+										<option value="attack">Combat Action</option>
 										<option value="strategy">Strategy Action</option>
 									</select>
 								</div>
-								<div class="col-2 offset-3">Power:</div>
-								<div class="col-7">
+								<div class="col-2 offset-3 powerRow1">Power:</div>
+								<div class="col-7 powerRow1">
 									<input type="number" id="action1pwr" min="0" max="99" class="form-control" style="width:30%;">
 								</div>
 								<div class="col-2 offset-3">Details:</div>
@@ -184,14 +200,15 @@
 								</div>
 								<div class="col-2 offset-3">Type:</div>
 								<div class="col-7">
-									<select id="action2Type" class="custom-select">
+									<select id="action2Type" class="custom-select actionType">
+										<option value="-" selected="selected"> - </option>
 										<option value="ability">Ability</option>
-										<option value="attack">Attack Action</option>
+										<option value="attack">Combat Action</option>
 										<option value="strategy">Strategy Action</option>
 									</select>
 								</div>
-								<div class="col-2 offset-3">Power:</div>
-								<div class="col-7">
+								<div class="col-2 offset-3 powerRow2">Power:</div>
+								<div class="col-7 powerRow2">
 									<input type="number" id="action2pwr" min="0" max="99" class="form-control" style="width:30%;">
 								</div>
 								<div class="col-2 offset-3">Details:</div>
@@ -202,7 +219,7 @@
 								<!-- Flavor text -->
 								<div class="col-3">Flavor Text</div>
 								<div class="col-9">
-									<textarea name="flavorText" rows="2" class="form-control"></textarea>
+									<textarea id="flavorText" rows="2" class="form-control"></textarea>
 								</div>
 
 								<!-- Credits -->
@@ -234,13 +251,11 @@
 				</div>
 			</div>
 		</main>
-		<footer>
+		<footer class="footer">
 			&copy; 4118 GE Applied Multiverse Dynamics Associated, Office of Card Collection and Management<br>
 		</footer>
 		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
+		
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

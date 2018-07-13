@@ -13,10 +13,17 @@
 	color:  var(--eigengrau);
 }
 
+html, body{
+	height: 100%;
+}
+
 body{
 	background-color: var(--eigengrau);
 	background-image: url("../img/backgroundTile.png");
 	padding: 0px;
+
+	display: flex;
+	flex-direction: column;
 }
 
 nav{
@@ -28,6 +35,7 @@ nav{
 
 main{
 	margin-top: 120px;
+	flex: 1 0 auto;
 }
 
 .card{
@@ -48,6 +56,8 @@ footer{
 	font-size: 10pt;
 	color: silver;
 	text-align: center;
+	flex-shrink: 0;
+	width: 100%;
 }
 
 canvas{
