@@ -7,21 +7,6 @@ My friend and I have been developing a card game for a couple of years. Along wi
 &ast;Cough&ast; Sorry, I got carried away. Anyway, I hope to make something pretty cool here.
 
 ## Development Roadmap
-<ol>
-    <li>Card creator</li>
-        <ol>
-            <li>Upload images</li>
-            <li>logic to hide form elements depending on card type</li>
-            <li>Download png of card button</li>
-            <li>Improve styling</li>
-        </ol>
-    <li>Create landing page</li>
-    <li>Story pages, archive. Make tool to aid uploading new chapters.</li>
-    <li>Wiki/about/lore. Make a space for worldbuilding articles and community submissions.</li>
-    <li>Card Database. Let users browse all (approved) created cards</li>
-    <li>Play the card game. Make an online version of the card game (mvp)</li>
-    <li>User portal to save cards and decks, track games won, etc.</li>
-</ol>
-
+See wiki
 
 
