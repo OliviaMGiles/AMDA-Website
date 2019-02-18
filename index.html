@@ -7,86 +7,73 @@
 
 <!doctype html>
 <html class="no-js" lang="">
-	<head>
+    <head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title></title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <title>Unlimitas Card Creator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<style>
-			body {
-				padding-top: 50px;
-				padding-bottom: 20px;
-			}
-		</style>
-		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
 		
 		<!-- My style -->
-		<link rel="stylesheet" href="css/amdaStyle1.css">
+		<link rel="stylesheet" href="css/amdaStyle.css">
 
-		<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-	</head>
+		<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>	
+    </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="header-container">
-            <header class="wrapper clearfix">
-                <h1 class="title">h1.title</h1>
-                <nav>
-                    <ul>
-                        <li><a href="#home"><img id="logo" src="img/AMDA_captioned.png" alt="AMDA logo" width=300/></a>
-						</li>
-                        <li><a href="#About">About</a></li>
-                        <li><a href="#Card">Card Registry</a></li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
+        
+        <!--Header-->
+		<nav class="navbar fixed-top navbar-expand-sm">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <img id="logo" src="img/AMDA_captioned.png" alt="AMDA logo" width=300/>
+                </a>
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="cardCreator.html">Card Creator</a></li>
+            </ul>
+        </nav>
 
-        <div class="main-container">
-            <div class="main wrapper clearfix">
-
-                <article>
-                    <header>
-                        <h1>article header h1</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec.</p>
-                    </header>
-                    <section>
-                        <h2>article section h2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
-                    </section>
-                    <section>
-                        <h2>article section h2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
-                    </section>
-                    <footer>
-                        <h3>article footer h3</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor.</p>
-                    </footer>
-                </article>
-
-                <aside>
-                    <h3>aside</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices.</p>
-                </aside>
-
-            </div> <!-- #main -->
-        </div> <!-- #main-container -->
-
+        <!-- Main body -->
+		<main class="container">
+			<!--Two columns. 1st is input form, 2nd is canvas-->
+			<div class="row no-gutters">
+				<div class="col">
+                    <div class="card"> <!--This is the card panel that holds the content-->
+                        <article>
+                            <header>
+                                <h1>Welcome to AMDA!</h1>
+                                <p>This Website is currently under construction, but we hope to soon provide Users in this universe access to the UnLimiTAS database.</p>
+                            </header>
+                            <section>
+                                <h2>Card Creator is Online!</h2>
+                                <a href="cardCreator.html">Click Here!</a>     
+                            </section>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </main>
 		
-        <div class="footer-container">
-            <footer class="wrapper">
-				<h3>footer</h3>
-				&copy; 4118 GE Applied Multiverse Dynamics Associated<br>
-            </footer>
-        </div>
-
+        <footer class="footer">
+			&copy; 4118 GE Applied Multiverse Dynamics Associated<br>
+        </footer>
+        
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 

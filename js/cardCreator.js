@@ -338,3 +338,10 @@ $.fn.hideOptionGroup = function() {
 	$(this).prependTo($(this).parent());
 	$(this).parent().animate({scrollTop:0},0);
    }
+
+   //convert canvas to an image
+   function convertCanvasToImage(canvas){
+	   var image = new Image();
+	   image.src = canvas.toDataURL("image/png");
+	   return image;
+   }
