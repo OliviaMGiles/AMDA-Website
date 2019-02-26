@@ -328,20 +328,23 @@ $.fn.hideOptionGroup = function() {
 	});
 	$(this).appendTo($(this).parent());
    
-   }
+}
    
-   $.fn.showOptionGroup = function() {
+$.fn.showOptionGroup = function() {
 	$(this).show();    
 	$(this).children().each(function(){
 		$(this).removeAttr("disabled" );
 	});
 	$(this).prependTo($(this).parent());
 	$(this).parent().animate({scrollTop:0},0);
-   }
+}
 
-   //convert canvas to an image
-   function convertCanvasToImage(canvas){
-	   var image = new Image();
-	   image.src = canvas.toDataURL("image/png");
-	   return image;
-   }
+//convert canvas to an image and then download
+function downloadCanvas(){
+	var downloadBtn = document.getElementById("downloadBtn");
+	var image = document.getElementById("cardCanvas").toDataURL("image/png").replace("image/png", "image/octet-stream");
+	var cardName = document.getElementById("cardName").value;
+	downloadBtn.setAttribute("href", image);
+	downloadBtn.setAttribute("download", cardName + ".png");
+	console.log("Download Canvas attempted");
+}

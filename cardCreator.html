@@ -87,6 +87,7 @@
 								<!-- Imported Image -->
 								<div class="col-3">Image:</div>
 								<div class="col-9">
+									Image will fit to 230x200.
 									<div class="custom-file">
 										<input type="file" id="imageLoader" class="custom-file-input" id="customFile" onchange="uploadImg();">
 										<label id="imageLoaderLabel" class="custom-file-label" for="customFile">Choose file</label>
@@ -253,7 +254,7 @@
 							Dynamically created card goes here. If you can read this, please use a browser that supports HTML5 canvas. 
 						</canvas>
 						
-						<a id="downloadBtn" class="button btn btn-default" style="background-color: white" href="#" download="">Download PNG</a>
+						<a id="downloadBtn" class="button btn btn-default" style="background-color: white" download="card.png" onclick="downloadCanvas()">Download</a>
 					</div>
 				</div>
 			</div>
